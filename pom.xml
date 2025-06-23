@@ -30,7 +30,7 @@
         <flyway.version>11.8.2</flyway.version>
         <jjwt.version>0.12.6</jjwt.version>
         <postgres.driver.version>42.7.7</postgres.driver.version>
-        <testcontainers.version>1.21.0</testcontainers.version>
+        <testcontainers.version>1.21.2</testcontainers.version>
         <spotless.version>2.44.4</spotless.version>
         <lombok.version>1.18.38</lombok.version>
     </properties>
