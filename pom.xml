@@ -27,7 +27,7 @@
     <properties>
         <java.version>21</java.version>
         <!-- libs que não fazem parte do BOM do Spring Boot -->
-        <flyway.version>11.8.2</flyway.version>
+        <flyway.version>11.9.1</flyway.version>
         <jjwt.version>0.12.6</jjwt.version>
         <postgres.driver.version>42.7.7</postgres.driver.version>
         <testcontainers.version>1.21.0</testcontainers.version>
