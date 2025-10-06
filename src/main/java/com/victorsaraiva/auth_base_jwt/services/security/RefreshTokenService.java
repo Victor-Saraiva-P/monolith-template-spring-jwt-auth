@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RefreshTokenService {
 
   @Value("${security.refresh-token.expiration}")
-  private long refreshTokenExpiration; // em milissegundos
+  private long REFRESH_TOKEN_EXPIRATION; // em milissegundos
 
   @Value("${api.base-url}")
   private String API_BASE_URL;
@@ -45,7 +45,7 @@ public class RefreshTokenService {
         RefreshTokenEntity.builder()
             .token(hashedToken)
             .user(user)
-            .expiryDate(Instant.now().plusMillis(refreshTokenExpiration))
+            .expiryDate(Instant.now().plusMillis(REFRESH_TOKEN_EXPIRATION))
             .build();
 
     refreshToken = refreshTokenRepository.save(refreshToken);
