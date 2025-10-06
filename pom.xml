@@ -31,7 +31,7 @@
         <jjwt.version>0.13.0</jjwt.version>
         <postgres.driver.version>42.7.8</postgres.driver.version>
         <testcontainers.version>1.21.3</testcontainers.version>
-        <spotless.version>2.46.1</spotless.version>
+        <spotless.version>3.0.0</spotless.version>
         <lombok.version>1.18.42</lombok.version>
     </properties>
 
