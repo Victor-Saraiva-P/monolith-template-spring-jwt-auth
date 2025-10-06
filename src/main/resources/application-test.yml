@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://postgres:5432/monolith_authdb   # 👈 host é "postgres", NÃO "localhost"
+        url: jdbc:postgresql://postgres:5432/monolith_authdb   # host é "postgres", NÃO "localhost"
         username: auth
         password: authpwd
     jpa:

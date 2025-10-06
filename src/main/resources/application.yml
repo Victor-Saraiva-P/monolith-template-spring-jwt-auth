@@ -11,7 +11,7 @@ spring:
 
     jpa:
         hibernate:
-            ddl-auto: validate         # ⬅️ deixa o Flyway ser o “dono” do schema
+            ddl-auto: validate         # deixa o Flyway ser o “dono” do schema
 
 logging:
     level:
