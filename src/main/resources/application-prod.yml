@@ -1,6 +1,6 @@
 spring:
     jpa:
         hibernate:
-            ddl-auto: validate      # garante que entidades ↔️ schema
+            ddl-auto: validate      # garante que entidades schema
     flyway:
         baseline-on-migrate: true # se já existe BD legado
