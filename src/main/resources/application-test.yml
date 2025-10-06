@@ -9,6 +9,7 @@ spring:
     flyway:
         enabled: true
 security:
+    frontend-url: "http://localhost:5173"
     access-jwt:
         secret: "chaveParaPropositoDeTestesApenasNaoUsarEmProducao" # Trocar na produção
         expiration: 900000  # 15 minutos em milissegundos
