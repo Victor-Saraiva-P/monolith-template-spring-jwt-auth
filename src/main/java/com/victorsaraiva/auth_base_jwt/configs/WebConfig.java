@@ -11,16 +11,16 @@ public class WebConfig implements WebMvcConfigurer {
   @Value("${security.frontend-url}")
   private String FRONTEND_URL;
 
-
   @Value("${api.base-url}")
   private String API_BASE_URL;
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {
-    registry.addMapping(API_BASE_URL + "/**")
-      .allowedOrigins(FRONTEND_URL)
-      .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-      .allowedHeaders("*")
-      .allowCredentials(true);
+    registry
+        .addMapping(API_BASE_URL + "/**")
+        .allowedOrigins(FRONTEND_URL)
+        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+        .allowedHeaders("*")
+        .allowCredentials(true);
   }
 }
