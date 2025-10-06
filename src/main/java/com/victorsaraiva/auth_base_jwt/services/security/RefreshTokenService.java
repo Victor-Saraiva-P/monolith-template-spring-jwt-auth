@@ -29,6 +29,9 @@ public class RefreshTokenService {
   @Value("${security.refresh-token.expiration}")
   private long refreshTokenExpiration; // em milissegundos
 
+  @Value("${api.base-url}")
+  private String API_BASE_URL;
+
   private final PasswordEncoder passwordEncoder;
   private final RefreshTokenRepository refreshTokenRepository;
   private final AccessTokenService accessTokenService;
@@ -105,14 +108,16 @@ public class RefreshTokenService {
         ResponseCookie.from("refreshToken", refreshToken.token())
             .httpOnly(true)
             .secure(true)
-            .path("/")
-            .maxAge(Duration.ofMillis(refreshTokenExpiration))
+            .path(API_BASE_URL + "/auth/")
+            .sameSite("Strict")
+            .maxAge(Duration.ofMillis(REFRESH_TOKEN_EXPIRATION))
             .build(),
         ResponseCookie.from("refreshTokenId", String.valueOf(refreshToken.id()))
             .httpOnly(true)
             .secure(true)
-            .path("/")
-            .maxAge(Duration.ofMillis(refreshTokenExpiration))
+            .path(API_BASE_URL + "/auth/")
+            .sameSite("Strict")
+            .maxAge(Duration.ofMillis(REFRESH_TOKEN_EXPIRATION))
             .build());
   }
 
