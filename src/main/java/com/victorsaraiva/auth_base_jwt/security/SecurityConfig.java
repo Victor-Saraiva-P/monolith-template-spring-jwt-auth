@@ -1,5 +1,7 @@
 package com.victorsaraiva.auth_base_jwt.security;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import com.victorsaraiva.auth_base_jwt.services.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,7 +35,7 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.csrf(AbstractHttpConfigurer::disable)
-        .cors(AbstractHttpConfigurer::disable)
+        .cors(withDefaults())
         .authorizeHttpRequests(
             auth ->
                 auth

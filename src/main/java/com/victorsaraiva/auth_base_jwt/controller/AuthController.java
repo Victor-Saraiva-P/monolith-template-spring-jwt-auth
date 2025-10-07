@@ -67,7 +67,7 @@ public class AuthController {
   }
 
   @GetMapping("/ping")
-  public String test() {
-    return "Olá mundo";
+  public ResponseEntity<String> ping() {
+    return ResponseEntity.ok("pong");
   }
 }

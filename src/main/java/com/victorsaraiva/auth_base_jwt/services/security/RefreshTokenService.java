@@ -27,7 +27,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class RefreshTokenService {
 
   @Value("${security.refresh-token.expiration}")
-  private long refreshTokenExpiration; // em milissegundos
+  private long REFRESH_TOKEN_EXPIRATION; // em milissegundos
+
+  @Value("${api.base-url}")
+  private String API_BASE_URL;
 
   private final PasswordEncoder passwordEncoder;
   private final RefreshTokenRepository refreshTokenRepository;
@@ -42,7 +45,7 @@ public class RefreshTokenService {
         RefreshTokenEntity.builder()
             .token(hashedToken)
             .user(user)
-            .expiryDate(Instant.now().plusMillis(refreshTokenExpiration))
+            .expiryDate(Instant.now().plusMillis(REFRESH_TOKEN_EXPIRATION))
             .build();
 
     refreshToken = refreshTokenRepository.save(refreshToken);
@@ -105,14 +108,16 @@ public class RefreshTokenService {
         ResponseCookie.from("refreshToken", refreshToken.token())
             .httpOnly(true)
             .secure(true)
-            .path("/")
-            .maxAge(Duration.ofMillis(refreshTokenExpiration))
+            .path(API_BASE_URL + "/auth/")
+            .sameSite("Strict")
+            .maxAge(Duration.ofMillis(REFRESH_TOKEN_EXPIRATION))
             .build(),
         ResponseCookie.from("refreshTokenId", String.valueOf(refreshToken.id()))
             .httpOnly(true)
             .secure(true)
-            .path("/")
-            .maxAge(Duration.ofMillis(refreshTokenExpiration))
+            .path(API_BASE_URL + "/auth/")
+            .sameSite("Strict")
+            .maxAge(Duration.ofMillis(REFRESH_TOKEN_EXPIRATION))
             .build());
   }
 
